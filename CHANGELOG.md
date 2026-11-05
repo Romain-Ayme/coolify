@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- Choose black or white for text on an accent by the higher contrast, for every theme, and keep accent text in the light or dark band of the surface it sits on
+- Tint the card well with the custom theme background on a light page, instead of leaving it white
+- Lighten the accent color, and the accent text on both light and dark pages
+
 ## [v4.6.0] - 2026-11-02
 
 ### Breaking Changes
