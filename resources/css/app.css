@@ -2788,6 +2788,12 @@ html[data-theme="custom"]:not(.dark) :is(.application-settings-section, .applica
     color: var(--color-fg);
 }
 
+/* Options follow the page .dark class. When the sidebar is the other scheme,
+   --color-fg is already its text, so the options use that. */
+html[data-sidebar-scheme] :is(.app-sidebar, .app-topbar-brand, .mobile-sidebar-sheet [role="dialog"]) .listbox-option {
+    color: var(--color-fg);
+}
+
 .listbox-option:hover {
     background: var(--coollabs-fill);
 }
@@ -6623,6 +6629,12 @@ html[data-theme="custom"] .mobile-sidebar-sheet nav.sidebar-nav {
 html[data-theme="custom"] :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item-active, .menu-subitem-active) {
     background-color: var(--theme-selected);
     color: var(--theme-selected-text);
+}
+
+/* The 3D style clears the row fill, so the Selected text would sit on the sidebar.
+   The label keeps the sidebar text. The tile keeps the accent. */
+html[data-theme="custom"]:where(:not([data-nav-items="flat"])) :is(.app-sidebar, .mobile-sidebar-sheet) :is(.menu-item-active, .menu-subitem-active) {
+    color: var(--theme-sidebar-text);
 }
 
 /* The 3D style shows the current page as an accent tile, like the Dark theme, on a light or dark sidebar. */
