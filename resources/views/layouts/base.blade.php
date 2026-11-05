@@ -27,14 +27,14 @@
             if (hue < 0) hue += 360;
             return `oklch(${(okL * 100).toFixed(2)}% ${chroma.toFixed(4)} ${hue.toFixed(2)})`;
         };
+        // Black or white, whichever has more contrast on the accent itself.
+        // applyStoredTheme sets it for every theme, including Light, Dark, and System.
         window.themeAccentForeground = (color) => {
-            const channels = window.normalizeThemeColor(color).match(/[a-f\d]{2}/gi).map(channel => parseInt(channel, 16) * 0.85 + 255 * 0.15);
-            const luminance = channels
-                .map(channel => channel / 255)
-                .map(channel => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4)
-                .reduce((sum, channel, index) => sum + channel * [0.2126, 0.7152, 0.0722][index], 0);
+            const luminance = relativeLuminance(window.normalizeThemeColor(color));
+            const black = (luminance + 0.05) / 0.05;
+            const white = 1.05 / (luminance + 0.05);
 
-            return luminance > 0.179 ? 'oklch(0% 0 0)' : 'oklch(100% 0 0)';
+            return black >= white ? 'oklch(0% 0 0)' : 'oklch(100% 0 0)';
         };
         // Custom theme: four colors. Its share code is "#sidebar,#selected,#accent,#background".
         // Every text color is derived from the color under it, so text stays readable.
