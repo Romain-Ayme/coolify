@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Fixed
+
+- Use the sidebar text color for menu entries, including Log out, when a custom theme gives the sidebar a different light or dark scheme than the page
+- Keep the current page label in the sidebar text color in the 3D icon style, where the row has no Selected fill
+
 ## [v4.6.0] - 2026-11-02
 
 ### Breaking Changes
